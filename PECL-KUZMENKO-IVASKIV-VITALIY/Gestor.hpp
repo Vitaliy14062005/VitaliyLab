@@ -12,6 +12,8 @@ private:
     Cola colas[4];            // Array de 4 colas para diferentes tipos de procesos
     Lista listaNormal;        // Lista para procesos normales
     Lista listaTiempoReal;    // Lista para procesos en tiempo real
+    int ultimoPid; // Último PID generado
+    int ultimoUsuario; // Último número de usuario generado
 
 public:
     // Constructor: Inicializa el gestor
