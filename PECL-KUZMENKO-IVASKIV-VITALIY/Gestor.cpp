@@ -6,8 +6,8 @@
 #include <vector>     // Para std::vector
 
 // Constructor: Inicializa el gestor y establece la semilla para la generación de números aleatorios
-Gestor::Gestor() {
-    std::srand(static_cast<unsigned int>(std::time(0))); // Establecer la semilla para std::rand usando el tiempo actual
+Gestor::Gestor() : ultimoPid(300), ultimoUsuario(0) {
+    std::srand(static_cast<unsigned int>(std::time(0))); 
 }
 
 // Destructor: Libera los recursos utilizados por el gestor
@@ -16,8 +16,8 @@ Gestor::~Gestor() {
 
 void Gestor::genera12Procesos() {
     for (int i = 0; i < 12; ++i) {
-        int pid = 300 + i + 1; // PID único a partir de 300
-        std::string nombre = "Usuario" + std::to_string(i + 1); // Nombre del usuario
+        int pid = ++ultimoPid; // Incrementar y usar el último PID generado
+        std::string nombre = "Usuario" + std::to_string(++ultimoUsuario); // Incrementar y usar el último número de usuario generado
         bool enEjecucion = false; // Estado del proceso (parado)
         bool esValido = true;
         bool esTiempoReal = (std::rand() % 2 == 1); // Generar si es tiempo real o no
@@ -298,6 +298,9 @@ void Gestor::reiniciar() {
     while (!listaTiempoReal.estaVacia()) {
         listaTiempoReal.eliminar(listaTiempoReal.getCabeza()->valor.getPid());
     }
+    // Restaurar el último PID y usuario
+    ultimoPid = 300;
+    ultimoUsuario = 0;
 }
 
 int Gestor::ProcesosEnPila() const {
