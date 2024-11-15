@@ -370,6 +370,6 @@ int Gestor::ProcesosEnListaTiempoReal()
 }
 int Gestor::ProcesosEnArbol()
 {
-    return 0;
+    return abb.getLongitud();
 }
 
