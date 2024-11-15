@@ -118,4 +118,8 @@ void Arbol::dibujar()
     cout << '\n' << '\n';
 }
 
+int Arbol::getLongitud()
+{
+    return longitud; 
+}
 Arbol::~Arbol() {}
