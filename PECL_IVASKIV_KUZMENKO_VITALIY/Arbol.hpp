@@ -14,8 +14,10 @@ public:
     void pintar();
     void dibujar();
     ~Arbol();
+    int getLongitud();
 
 private:
+    int longitud;
     pnodoAbb raiz;
     pnodoAbb insertar(pnodoAbb, int);
     void pintar(pnodoAbb);
